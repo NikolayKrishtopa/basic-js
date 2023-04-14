@@ -13,14 +13,11 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function getCommonCharacterCount(s1, s2) {
   let res = 0;
-  const checked = [];
   const s2Arr = s2.split('');
   s1.split('').forEach((e) => {
     if (s2Arr.includes(e)) {
-      if (!checked.includes(e)) {
-        res += 1;
-        checked.push(e);
-      }
+      res += 1;
+      delete s2Arr[s2Arr.indexOf(e)];
     }
   });
   return res;
