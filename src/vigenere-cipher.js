@@ -20,8 +20,8 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 class VigenereCipheringMachine {
-  constructor(reverse) {
-    this.reverse = !!reverse;
+  constructor(direct = true) {
+    this.reverse = !direct;
     this.alphabet = [
       'a',
       'b',
@@ -76,7 +76,6 @@ class VigenereCipheringMachine {
       : encrypted.join('').toUpperCase();
   }
   decrypt(str, key) {
-    if (this.reverse) str = str.split('').reverse().join('');
     if (!str || !key) throw new Error('Incorrect arguments!');
     const decrypted = [];
     key = key.repeat(Math.ceil(str.length / key.length));
@@ -96,7 +95,9 @@ class VigenereCipheringMachine {
         decrypted.push(this.alphabet[index]);
       }
     });
-    return decrypted.join('').toUpperCase();
+    return this.reverse
+      ? decrypted.reverse().join('').toUpperCase()
+      : decrypted.join('').toUpperCase();
   }
 }
 
