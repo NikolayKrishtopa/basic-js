@@ -18,7 +18,7 @@ function getSeason(date) {
   const month = date.getMonth();
   return month < 2
     ? 'winter'
-    : month < 6
+    : month < 5
     ? 'spring'
     : month < 8
     ? 'summer'
