@@ -28,11 +28,10 @@ function dateSample(sampleActivity) {
   ) {
     return false;
   } else {
-    t = Math.ceil(
+    return Math.ceil(
       (Math.log(MODERN_ACTIVITY / Number(sampleActivity)) * HALF_LIFE_PERIOD) /
         Math.log(2)
     );
-    return t;
   }
 }
 
